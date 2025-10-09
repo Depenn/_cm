@@ -1,122 +1,121 @@
-# Geometry Calculations (Geometri Analitik 2D)
+# Geometry Calculations (2D Analytic Geometry)
 
-## 📘 Tujuan
-Program ini dibuat untuk mengimplementasikan konsep **Geometri Analitik dan Aljabar Linier** dalam bentuk skrip Python berorientasi objek. Melalui kelas-kelas dan fungsi yang disusun, pengguna dapat melakukan perhitungan dan transformasi terhadap objek-objek geometris 2D seperti titik, garis, lingkaran, dan segitiga.
-
----
-
-## 🧩 Struktur Program
-
-### 1. Kelas dan Desain OOP
-Program ini memiliki empat kelas utama:
-
-#### 🟢 **Class Point (Titik)**
-- **Atribut:** `x`, `y`
-- **Metode:**
-  - `distance_to(other)`: menghitung jarak ke titik lain menggunakan rumus Euclidean.
-  - `translate(dx, dy)`: mentranslasikan titik sejauh `(dx, dy)`.
-  - `scale(factor, center)`: menskalakan posisi titik relatif terhadap pusat tertentu.
-  - `rotate(angle, center)`: memutar titik sejauh `angle` derajat terhadap pusat tertentu.
-
-#### 🔵 **Class Line (Garis)**
-- **Representasi:** `Ax + By + C = 0`
-- **Metode:**
-  - `from_points(p1, p2)`: classmethod untuk membentuk garis dari dua titik.
-  - `translate(dx, dy)`: mentranslasikan garis sejauh `(dx, dy)`.
-
-#### 🔴 **Class Circle (Lingkaran)**
-- **Atribut:** `center (Point)`, `radius`
-- **Metode:**
-  - `translate(dx, dy)`: memindahkan lingkaran.
-  - `scale(factor, center)`: menskalakan ukuran lingkaran.
-  - `rotate(angle, center)`: memutar lingkaran (pusat ikut berputar, radius tetap).
-
-#### 🟡 **Class Triangle (Segitiga)**
-- **Atribut:** `p1`, `p2`, `p3` (objek Point)
-- **Metode:**
-  - `side_lengths()`: menghitung panjang ketiga sisi.
-  - `perimeter()`: menghitung keliling.
-  - `area()`: menghitung luas dengan **Rumus Heron** atau **Shoelace Formula**.
-  - `triangle_type()`: menentukan jenis segitiga (sama sisi, siku-siku, sama kaki, sembarang).
-  - Transformasi (`translate`, `scale`, `rotate`) berlaku pada seluruh titik pembentuk segitiga.
+## 📘 Objective
+This program implements the concepts of **Analytic Geometry and Linear Algebra** using object-oriented Python. Through well-structured classes and functions, users can perform geometric calculations and transformations on 2D objects such as points, lines, circles, and triangles.
 
 ---
 
-## 🔢 Fungsi Komputasi Global
+## 🧩 Program Structure
+
+### 1. Classes and OOP Design
+The program defines four main classes:
+
+#### 🟢 **Class Point**
+- **Attributes:** `x`, `y`
+- **Methods:**
+  - `distance_to(other)`: calculates the Euclidean distance to another point.
+  - `translate(dx, dy)`: translates the point by `(dx, dy)`.
+  - `scale(factor, center)`: scales the point relative to a given center.
+  - `rotate(angle, center)`: rotates the point by a given `angle` (in degrees) around a center.
+
+#### 🔵 **Class Line**
+- **Representation:** `Ax + By + C = 0`
+- **Methods:**
+  - `from_points(p1, p2)`: classmethod that creates a line from two points.
+  - `translate(dx, dy)`: translates the line by `(dx, dy)`.
+
+#### 🔴 **Class Circle**
+- **Attributes:** `center (Point)`, `radius`
+- **Methods:**
+  - `translate(dx, dy)`: moves the circle.
+  - `scale(factor, center)`: scales the circle relative to a given center.
+  - `rotate(angle, center)`: rotates the circle’s center while keeping the radius unchanged.
+
+#### 🟡 **Class Triangle**
+- **Attributes:** `p1`, `p2`, `p3` (instances of Point)
+- **Methods:**
+  - `side_lengths()`: calculates the lengths of all three sides.
+  - `perimeter()`: computes the triangle’s perimeter.
+  - `area()`: calculates area using **Heron’s formula** or the **Shoelace formula**.
+  - `triangle_type()`: determines the triangle type (right, equilateral, isosceles, scalene).
+  - Supports geometric transformations (`translate`, `scale`, `rotate`) on all points.
+
+---
+
+## 🔢 Global Computational Functions
 
 ### 1. `intersect_lines(line1, line2)`
-Menentukan titik potong dua garis. Jika sejajar → tidak ada solusi; jika berimpit → infinite solutions.
+Finds the intersection point of two lines. If parallel → no solution; if coincident → infinite solutions.
 
 ### 2. `intersect_circles(c1, c2)`
-Menghitung titik potong dua lingkaran berdasarkan jarak antar pusat dan radius. Dapat menghasilkan 0, 1, atau 2 titik potong.
+Finds intersection points between two circles based on their centers and radii. May return 0, 1, or 2 points.
 
 ### 3. `intersect_line_circle(line, circle)`
-Menyelesaikan sistem persamaan garis dan lingkaran menggunakan **discriminant kuadrat**.
+Solves the system of equations between a line and a circle using a **quadratic discriminant**.
 
 ### 4. `perpendicular_line_from_point(line, point)`
-Membentuk persamaan garis tegak lurus terhadap `line` yang melalui `point`.
+Constructs a line perpendicular to a given line that passes through a given point.
 
 ### 5. `find_foot_of_perpendicular(line, point)`
-Menentukan **titik kaki garis tegak lurus** dari `point` ke `line`.
+Finds the **foot of the perpendicular** from a point to a line.
 
 ### 6. `verify_pythagorean_theorem(p1, p2, p3)`
-Memverifikasi apakah tiga titik membentuk **segitiga siku-siku** berdasarkan hubungan:
+Verifies whether three points form a **right triangle** using the relationship:
 \[ a^2 + b^2 ≈ c^2 \]
-Menggunakan toleransi kesalahan `EPS = 1e-9`.
+Uses a small tolerance `EPS = 1e-9` for floating-point precision.
 
 ---
 
-## ⚙️ Presisi dan Penanganan Numerik
-- Semua perbandingan floating-point menggunakan **epsilon kecil (`EPS = 1e-9`)**.
-- Tujuannya untuk menghindari error akibat representasi pecahan biner pada tipe `float`.
+## ⚙️ Numerical Precision
+- All floating-point comparisons use a small **epsilon (`EPS = 1e-9`)**.
+- This prevents errors caused by binary representation of floating-point values.
 
 ---
 
-## 🔬 Prinsip Matematis di Balik Program
-1. **Geometri Analitik 2D**: setiap objek direpresentasikan dengan persamaan koordinat.
-2. **Aljabar Linier**: digunakan untuk rotasi dan transformasi matriks.
-3. **Trigonometri**: digunakan dalam rotasi titik dan perhitungan jarak.
-4. **Teorema Pythagoras**: digunakan untuk mendeteksi segitiga siku-siku.
+## 🔬 Mathematical Principles Behind the Program
+1. **2D Analytic Geometry:** each object is represented using coordinate equations.
+2. **Linear Algebra:** used in rotation and scaling transformations.
+3. **Trigonometry:** used in point rotations and distance computations.
+4. **Pythagorean Theorem:** used to verify right triangles.
 
 ---
 
-## 💻 Cara Verifikasi Teorema Pythagoras di Program
-1. Tentukan tiga titik (misalnya `A(0,0)`, `B(3,0)`, `C(0,4)`).
-2. Panggil fungsi:
+## 💻 How to Verify the Pythagorean Theorem in Code
+1. Define three points, e.g. `A(0,0)`, `B(3,0)`, `C(0,4)`.
+2. Call the function:
    ```python
    verify_pythagorean_theorem(A, B, C)
    ```
-3. Program akan menghitung ketiga sisi segitiga:
-   - AB, BC, dan AC
-   - Mengecek apakah \( a^2 + b^2 ≈ c^2 \)
-4. Jika benar, fungsi akan mengembalikan **True** dan menampilkan bahwa segitiga tersebut **siku-siku**.
+3. The program will calculate the side lengths AB, BC, and AC.
+4. It checks whether \( a^2 + b^2 ≈ c^2 \).
+5. If true, the function returns **True**, indicating the triangle is **right-angled**.
 
 ---
 
-## 🧠 Contoh Eksekusi (Main Block)
+## 🧠 Example Execution (Main Block)
 ```python
 if __name__ == "__main__":
-    # Contoh penggunaan kelas Point
+    # Example usage of Point class
     p1 = Point(0, 0)
     p2 = Point(3, 4)
-    print("Jarak p1 ke p2:", p1.distance_to(p2))
+    print("Distance from p1 to p2:", p1.distance_to(p2))
 
-    # Garis dari dua titik
+    # Line from two points
     L1 = Line.from_points(Point(0, 0), Point(1, 1))
     L2 = Line.from_points(Point(0, 1), Point(1, 0))
-    print("Titik potong L1 dan L2:", intersect_lines(L1, L2))
+    print("Intersection of L1 and L2:", intersect_lines(L1, L2))
 
-    # Lingkaran
+    # Circles intersection
     C1 = Circle(Point(0, 0), 5)
     C2 = Circle(Point(4, 0), 3)
-    print("Titik potong dua lingkaran:", intersect_circles(C1, C2))
+    print("Intersection points of two circles:", intersect_circles(C1, C2))
 
-    # Verifikasi segitiga siku-siku
+    # Verify right triangle
     A, B, C = Point(0, 0), Point(3, 0), Point(0, 4)
-    print("Apakah segitiga ABC siku-siku?", verify_pythagorean_theorem(A, B, C))
+    print("Is triangle ABC right-angled?", verify_pythagorean_theorem(A, B, C))
 ```
 
 ---
 
-## 📖 Kesimpulan
-Program ini memadukan **konsep matematis dan pemrograman berorientasi objek (OOP)** untuk menyelesaikan permasalahan geometris secara terstruktur. Semua perhitungan didasarkan pada **Geometri Analitik**, **Teorema Pythagoras**, dan **Trigonometri**, menjadikannya contoh ideal untuk pembelajaran dasar komputasi matematis dua dimensi.
+## 📖 Conclusion
+This program integrates **mathematical principles** and **object-oriented programming (OOP)** to solve geometric problems systematically. All computations are grounded in **Analytic Geometry**, **Pythagorean Theorem**, and **Trigonometry**, making it an excellent example for learning 2D computational mathematics.
