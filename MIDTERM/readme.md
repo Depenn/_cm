@@ -45,7 +45,7 @@ Based on 1,000 simulated scenarios for the next 30 days (December 2025 projectio
 
 * **Start Price:** ~$90,394
 * **Expected Mean:** ~$89,676 (Indicates a slight bearish/sideways trend based on historical drift).
-* **Probability > $100k:** **17.20%**
+* **Probability > $100k:** **18%**
 * **Risk (VaR 95%):** There is a 5% chance the price could drop to **$72,822** or lower.
 
 ### Visualization
