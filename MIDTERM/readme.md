@@ -49,7 +49,7 @@ Based on 1,000 simulated scenarios for the next 30 days (December 2025 projectio
 * **Risk (VaR 95%):** There is a 5% chance the price could drop to **$72,822** or lower.
 
 ### Visualization
-![Simulation Result](<img width="1873" height="742" alt="image" src="https://github.com/user-attachments/assets/450c0652-08d7-425b-8502-89e993e8a28c" />
+![Simulation Result](https://github.com/Depenn/_cm/blob/0d193f67c55f7f2926db1813a1a6ca39015da921/MIDTERM/Screenshot%202025-12-28%20235136.png
 )
 *(Figure: Left panel shows 1,000 Monte Carlo simulation paths. Right panel shows the distribution of final prices with risk thresholds)*
 
