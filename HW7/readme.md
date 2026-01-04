@@ -1,4 +1,4 @@
-# HW10: Mathematical Principles of Hypothesis Testing
+# HW7: Mathematical Principles of Hypothesis Testing
 
 This repository contains the manual Python implementation of Z-tests and T-tests. 
 Unlike standard implementations that rely on `scipy.stats` functions (black box), these scripts **manually calculate** the statistical formulas to demonstrate an understanding of the underlying mathematical derivations.
